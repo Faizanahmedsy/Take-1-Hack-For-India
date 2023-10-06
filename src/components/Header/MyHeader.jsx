@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Layout, Button } from "antd";
+import { Menu, Layout, Button, Row, Col } from "antd";
 import { Link } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 const { Header, Content, Footer } = Layout;
@@ -41,8 +41,8 @@ const MyHeader = () => {
           Login
         </Button>
       </Header> */}
-      <Header className="header">
-        <div className="logo">
+      {/* <Header className="header"> */}
+      {/* <div className="logo">
           <Link to="/">
             <img src="/path/to/your-logo.png" alt="Logo" />
           </Link>
@@ -61,8 +61,32 @@ const MyHeader = () => {
         </Menu>
         <Button className="login-button" icon={<UserOutlined />}>
           Login
-        </Button>
-      </Header>
+        </Button> */}
+      <Row gutter={16}>
+        <Col span={18}>
+          <Link to={"/form"}>
+            <span
+              style={{
+                marginLeft: "52px",
+              }}
+            >
+              India Cares
+            </span>
+          </Link>
+        </Col>
+        <Col span={2}>
+          <Link to={"/form"}>Raise a complain</Link>
+          {/* <Link>HEllo</Link>
+          <Link>HEllo</Link> */}
+        </Col>
+        <Col span={2}>
+          <Link to={"/list"}>Public Complains</Link>
+        </Col>
+        <Col span={2}>
+          <Link to={"/map"}>Map</Link>
+        </Col>
+      </Row>
+      {/* </Header> */}
     </>
   );
 };

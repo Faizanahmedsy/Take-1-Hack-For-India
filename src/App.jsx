@@ -31,24 +31,27 @@ import SignIn from "./components/SignIn/SignIn";
 import Listing from "./components/Listing/Listing";
 import ComplaintDetails from "./components/ComplaintDetails/ComplaintDetails";
 import Protected from "./RouterDom/Protected";
-import MapComponent from "./components/MapComponent/MapComponent";
+// import MapComponent from "./components/MapComponent/MapComponent";
 import AdminHome from "./AdminPanel/AdminHome";
+import MapSearchComponent from "./components/MapSearchComponent/MapSearchComponent";
+// import LeafLetMap from "./components/LeafLetMap/LeafLetMap";
 
 function App() {
   const isLoggedIn = true;
 
   return (
     <Router>
-      {/* <AppLayout> */}
-      <Routes>
-        <Route path="/form" element={<EventRegistrationForm />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/" element={<SignIn />} />
-        <Route path="/list" element={<Listing />} />
-        <Route path="/complaintdetails/:id" element={<ComplaintDetails />} />
-        <Route path="/map" element={<MapComponent />} />
-        <Route path="/adminhome" element={<AdminHome />} />
-        {/* <Route
+      <AppLayout>
+        <Routes>
+          <Route path="/form" element={<EventRegistrationForm />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/list" element={<Listing />} />
+          <Route path="/complaintdetails/:id" element={<ComplaintDetails />} />
+          {/* <Route path="/map" element={<MapSearchComponent />} /> */}
+          {/* <Route path="/leafletmap" element={<LeafLetMap />} /> */}
+          <Route path="/adminhome" element={<AdminHome />} />
+          {/* <Route
           path="/form"
           element={
             <Protected isLoggedIn={isLoggedIn}>
@@ -56,8 +59,8 @@ function App() {
             </Protected>
           }
         /> */}
-      </Routes>
-      {/* </AppLayout> */}
+        </Routes>
+      </AppLayout>
     </Router>
   );
 }

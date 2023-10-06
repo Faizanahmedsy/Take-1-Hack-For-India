@@ -7,6 +7,7 @@ import {
   Row,
   Select,
   Table,
+  Tag,
   Typography,
 } from "antd";
 import React, { useState } from "react";
@@ -201,15 +202,16 @@ const Listing = () => {
       align: "center",
       render: (record) => (
         <div style={{ display: "flex" }}>
-          <Button
+          <Tag
             type="primary"
+            color="blue"
             onClick={() => {
               console.log("data", record);
               navigate("/complaintdetails/" + record._id);
             }}
           >
             Detail
-          </Button>
+          </Tag>
 
           {/* <Tag
             color="blue"
@@ -224,33 +226,37 @@ const Listing = () => {
             {" "}
             Download{" "}
           </Tag> */}
+          <Tag
+            color="green"
+            type="primary"
+            onClick={() => handleUpvote(record._id)}
+            icon={<CaretUpOutlined />} // Replace with your upvote icon
+          ></Tag>
+          <Tag
+            color="red"
+            type="primary"
+            onClick={() => handleDownvote(record._id)}
+            icon={<CaretDownOutlined />} // Replace with your downvote icon
+          ></Tag>
         </div>
       ),
     },
-    {
-      // title: "Upvotes",
-      key: "upvotes",
-      align: "center",
-      render: (record) => (
-        <Button
-          type="primary"
-          onClick={() => handleUpvote(record._id)}
-          icon={<CaretUpOutlined />} // Replace with your upvote icon
-        ></Button>
-      ),
-    },
-    {
-      // title: "Downvotes",
-      key: "downvotes",
-      align: "center",
-      render: (record) => (
-        <Button
-          type="primary"
-          onClick={() => handleDownvote(record._id)}
-          icon={<CaretDownOutlined />} // Replace with your downvote icon
-        ></Button>
-      ),
-    },
+    // {
+    //   // title: "Upvotes",
+    //   key: "upvotes",
+    //   align: "center",
+    //   render: (record) => (
+
+    //   ),
+    // },
+    // {
+    //   // title: "Downvotes",
+    //   key: "downvotes",
+    //   align: "center",
+    //   render: (record) => (
+
+    //   ),
+    // },
   ];
 
   return (
@@ -280,6 +286,39 @@ const Listing = () => {
 
         <Card>
           <Row
+            gutter={[16, 16]}
+            style={{
+              marginBottom: "20px",
+            }}
+          >
+            <Col span={6}>
+              <span>Issues Resolved So Far</span>
+              <Tag>
+                <strong>1001</strong>
+              </Tag>
+            </Col>
+            <Col span={6}>
+              <span>Number of people contributed</span>
+              <Tag>
+                <strong>200</strong>
+              </Tag>
+            </Col>
+            <Col span={6}>
+              <span>Issues Resolved So Far</span>
+              <Tag>
+                <strong>1001</strong>
+              </Tag>
+            </Col>
+            <Col span={6}>
+              {" "}
+              <span>Reached Localities</span>
+              <Tag>
+                <strong>2001</strong>
+              </Tag>
+            </Col>
+          </Row>
+
+          <Row
             style={{
               marginBottom: "20px",
             }}
@@ -290,11 +329,12 @@ const Listing = () => {
                 strong
                 style={{
                   marginLeft: "20px",
+                  marginRight: "10px",
                 }}
               >
-                {/* Total {list?.totalCount} */}
-                {/* {total} */}
+                Total
               </Typography.Text>
+              <Tag color="blue">10</Tag>
             </Col>
 
             <Col
@@ -542,28 +582,769 @@ const Listing = () => {
             {/* </Select>
           </Col> */}
           </Row>
-          <Table
-            columns={columns}
-            dataSource={dummyData}
-            //   dataSource={
-            //     loading ? [] : Array.isArray(list?.data) ? list?.data : []
-            //   }
-            //   onChange={handleTableChange}
-            //   size="small"
-            //   pagination={{
-            //     style: {
-            //       height: "140px",
-            //       display: "flex",
-            //     },
-            //     current: page,
-            //     pageSize: limit,
-            //     total: list?.totalCount,
-            //     showSizeChanger: true,
-            //     // onChange: handlePageChange,
-            //   }}
-            //   loading={loading}
-            //   scroll={{ x: "auto" }}
-          />
+          {/* <Table columns={columns} dataSource={dummyData} /> */}
+
+          <Row gutter={[16, 16]}>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          style={{
+                            cursor: "pointer",
+                          }}
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          style={{
+                            cursor: "pointer",
+                          }}
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          style={{
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            // console.log("data);
+                            navigate("/complaintdetails/10");
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Row>
+                  <Col span={12}>
+                    <img
+                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                      alt="Image"
+                      width={"150px"}
+                      height={"150px"}
+                    />
+                  </Col>
+                  <Col span={12}>
+                    <h3>Problem 1</h3>
+                    <p>
+                      <strong>Problem Description:</strong> Description 1
+                    </p>
+                    <Row>
+                      <Col>
+                        <Tag
+                          color="green"
+                          type="primary"
+                          onClick={() => handleUpvote(record._id)}
+                          icon={<CaretUpOutlined />} // Replace with your upvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          color="red"
+                          type="primary"
+                          onClick={() => handleDownvote(record._id)}
+                          icon={<CaretDownOutlined />} // Replace with your downvote icon
+                        ></Tag>
+                      </Col>
+                      <Col>
+                        <Tag
+                          type="primary"
+                          color="blue"
+                          onClick={() => {
+                            console.log("data", record);
+                            navigate("/complaintdetails/" + record._id);
+                          }}
+                        >
+                          Detail
+                        </Tag>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+          </Row>
         </Card>
       </div>
     </>
