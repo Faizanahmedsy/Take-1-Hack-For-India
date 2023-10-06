@@ -31,6 +31,8 @@ import SignIn from "./components/SignIn/SignIn";
 import Listing from "./components/Listing/Listing";
 import ComplaintDetails from "./components/ComplaintDetails/ComplaintDetails";
 import Protected from "./RouterDom/Protected";
+import MapComponent from "./components/MapComponent/MapComponent";
+import AdminHome from "./AdminPanel/AdminHome";
 
 function App() {
   const isLoggedIn = true;
@@ -44,6 +46,8 @@ function App() {
         <Route path="/" element={<SignIn />} />
         <Route path="/list" element={<Listing />} />
         <Route path="/complaintdetails/:id" element={<ComplaintDetails />} />
+        <Route path="/map" element={<MapComponent />} />
+        <Route path="/adminhome" element={<AdminHome />} />
         {/* <Route
           path="/form"
           element={

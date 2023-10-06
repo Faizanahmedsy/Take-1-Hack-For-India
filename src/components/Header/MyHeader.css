@@ -1,0 +1,55 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #001529;
+  padding: 0 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.site-title {
+  font-size: 20px;
+  color: #fff;
+}
+
+.menu {
+  background-color: #001529;
+}
+
+.menu-item {
+  margin-left: 20px; /* Adjust the spacing between menu items as needed */
+}
+
+.login-button {
+  background-color: #1890ff;
+  color: #fff;
+  border: none;
+}
+
+.login-button:hover {
+  background-color: #40a9ff;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-title {
+    margin-top: 5px;
+  }
+
+  .menu {
+    display: none;
+  }
+}
