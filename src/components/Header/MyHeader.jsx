@@ -11,7 +11,7 @@ const MyHeader = () => {
     <>
       <div
         style={{
-          padding: "30px",
+          padding: "10px",
           backgroundColor: "#9EDDFF",
         }}
       >
@@ -84,7 +84,7 @@ const MyHeader = () => {
               </span>
             </Link>
           </Col> */}
-          <Col span={18}>
+          <Col span={16}>
             <Link to={"/form"}>
               <span
                 style={{
@@ -148,7 +148,7 @@ const MyHeader = () => {
             </Link>
           </Col>
           <Col span={2}>
-            <Link to={"/map"}>
+            <Link to={"/contributers"}>
               {" "}
               <Tag
                 color="blue"
@@ -156,12 +156,36 @@ const MyHeader = () => {
                 style={{
                   borderRadius: "10px",
                   padding: "10px",
+                  fontWeight: "bold",
+                  width: "100%",
+                  textAlign: "center",
                 }}
                 // style={{
                 //   color: "#000000",
                 // }}
               >
-                Map
+                Contributers
+              </Tag>
+            </Link>
+          </Col>
+          <Col span={2}>
+            <Link to={"/map"}>
+              {" "}
+              <Tag
+                color="geekblue"
+                // bordered={false}
+                style={{
+                  borderRadius: "10px",
+                  padding: "10px",
+                  fontWeight: "bold",
+                  width: "100%",
+                  textAlign: "center",
+                }}
+                // style={{
+                //   color: "#000000",
+                // }}
+              >
+                See on Map
               </Tag>
             </Link>
           </Col>

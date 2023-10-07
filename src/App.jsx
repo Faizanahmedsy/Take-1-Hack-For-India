@@ -34,6 +34,8 @@ import Protected from "./RouterDom/Protected";
 // import MapComponent from "./components/MapComponent/MapComponent";
 import AdminHome from "./AdminPanel/AdminHome";
 import Login from "./components/Login/Login";
+import Contributers from "./components/Contributers/Contributers";
+import MyMap from "./components/MyMap/MyMap";
 // import MapSearchComponent from "./components/MapSearchComponent/MapSearchComponent";
 // import LeafLetMap from "./components/LeafLetMap/LeafLetMap";
 
@@ -59,6 +61,8 @@ function App() {
         {/* <Route path="/map" element={<MapSearchComponent />} /> */}
         {/* <Route path="/leafletmap" element={<LeafLetMap />} /> */}
         <Route path="/adminhome" element={<AdminHome />} />
+        <Route path="/contributers" element={<Contributers />} />
+        <Route path="/map" element={<MyMap />} />
         <Route
           path="/form"
           element={
