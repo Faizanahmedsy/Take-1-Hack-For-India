@@ -53,24 +53,23 @@ const ComplaintDetails = () => {
                   }}
                 >
                   <Col
-                    span={6}
+                    span={8}
                     // style={{
                     //   textAlign: "center",
                     // }}
                   >
                     Raised By
                   </Col>
-                  <Col span={6}>Existent in</Col>
-                  <Col span={6}>Completed</Col>
-                  <Col span={6}>Cancelled</Col>
+                  <Col span={8}>Exists in</Col>
+                  <Col span={8}>No of people contributed</Col>
                 </Row>
                 <Row>
-                  <Col span={6}>
+                  <Col span={8}>
                     <Tag color="green" className="fab-custom-tags">
                       10000 Citizens
                     </Tag>
                   </Col>
-                  <Col span={6}>
+                  <Col span={8}>
                     <Tag
                       color="cyan"
                       style={{
@@ -84,7 +83,7 @@ const ComplaintDetails = () => {
                       277 Areas
                     </Tag>
                   </Col>
-                  <Col span={6}>
+                  <Col span={8}>
                     <Tag
                       color="geekblue"
                       style={{
@@ -94,11 +93,10 @@ const ComplaintDetails = () => {
                         borderRadius: "15px",
                       }}
                     >
-                      {" "}
-                      201{" "}
+                      201
                     </Tag>
                   </Col>
-                  <Col span={6}>
+                  {/* <Col span={6}>
                     <Tag
                       color="red"
                       style={{
@@ -111,11 +109,12 @@ const ComplaintDetails = () => {
                       {" "}
                       76{" "}
                     </Tag>
-                  </Col>
+                  </Col> */}
                 </Row>
               </Card>
             </Col>
-            <Col span={12}>
+            <Col span={12}></Col>
+            {/* <Col span={12}>
               <Card>
                 <Row
                   style={{
@@ -182,7 +181,7 @@ const ComplaintDetails = () => {
                   </Col>
                 </Row>
               </Card>
-            </Col>
+            </Col> */}
           </Row>
         </div>
       </AppLayout>
