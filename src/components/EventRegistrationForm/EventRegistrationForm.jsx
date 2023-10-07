@@ -238,10 +238,11 @@ const EventRegistrationForm = () => {
               <h2
                 style={{
                   marginLeft: "10px",
+                  marginTop: "30px",
                 }}
               >
                 {/* Report Problems to local government */}
-                Raise a Complaint to your near by Municipal Corporation
+                Raise a issue
               </h2>
             </Col>
             <Col lg={6} md={6} sm={6} xs={6}>
@@ -333,7 +334,7 @@ const EventRegistrationForm = () => {
                       >
                         <Select placeholder="Choose Locality">
                           <Select.Option key={1} value={"1"}>
-                            Ahmedabad
+                            Raikhad, Ahmedabad
                           </Select.Option>
                           <Select.Option key={2} value={"2"}>
                             Gandhinagar

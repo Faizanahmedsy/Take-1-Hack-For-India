@@ -63,6 +63,21 @@ const Listing = () => {
 
   // ...
 
+  const ProblemImages = [
+    {
+      url: "https://images.pexels.com/photos/10911941/pexels-photo-10911941.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      url: "https://images.pexels.com/photos/1549528/pexels-photo-1549528.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      url: "https://images.pexels.com/photos/2967770/pexels-photo-2967770.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      url: "https://images.pexels.com/photos/1730341/pexels-photo-1730341.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+  ];
+
   useEffect(() => {
     const token = localStorage.getItem("token");
   }, []);
@@ -397,26 +412,42 @@ const Listing = () => {
             >
               <Col span={6}>
                 <span>Issues Resolved So Far</span>
-                <Tag>
+                <Tag
+                  style={{
+                    margin: "10px",
+                  }}
+                >
                   <strong>1001</strong>
                 </Tag>
               </Col>
               <Col span={6}>
                 <span>Number of people contributed</span>
-                <Tag>
+                <Tag
+                  style={{
+                    margin: "10px",
+                  }}
+                >
                   <strong>200</strong>
                 </Tag>
               </Col>
               <Col span={6}>
-                <span>Issues Resolved So Far</span>
-                <Tag>
+                <span>Complains recived</span>
+                <Tag
+                  style={{
+                    margin: "10px",
+                  }}
+                >
                   <strong>1001</strong>
                 </Tag>
               </Col>
               <Col span={6}>
                 {" "}
                 <span>Reached Localities</span>
-                <Tag>
+                <Tag
+                  style={{
+                    margin: "10px",
+                  }}
+                >
                   <strong>2001</strong>
                 </Tag>
               </Col>
@@ -688,15 +719,16 @@ const Listing = () => {
             </Row>
             {/* <Table columns={columns} dataSource={dummyData} /> */}
 
-            <Row gutter={[16, 16]}>
+            <Row>
               {apiData?.map((record) => (
                 <Col span={12} key={record._id}>
                   <Card>
                     <Row>
                       <Col span={12}>
-                        {/* {record?.images.map((item) => ( */}
+                        {/* {ProblemImages.map((item) => ( */}
                         <img
-                          src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                          // src="https://images.pexels.com/photos/1730341/pexels-photo-1730341.jpeg?auto=compress&cs=tinysrgb&w=600"
+                          src={record.images[0]}
                           alt="Image"
                           width={"150px"}
                           height={"150px"}
@@ -704,9 +736,9 @@ const Listing = () => {
                         {/* ))} */}
                       </Col>
                       <Col span={12}>
-                        {record?.complaintRaisedByData?.map((item) => (
-                          <h3 key={item?._id}>{item?.fullName}</h3>
-                        ))}
+                        {/* {record?.complaintRaisedByData?.map((item) => ( */}
+                        <h3 key={record?._id}>{record?.problemName}</h3>
+                        {/* ))} */}
                         <p>
                           <strong>Problem Description:</strong>{" "}
                           {record.problemDescription}
@@ -753,707 +785,6 @@ const Listing = () => {
                   </Card>
                 </Col>
               ))}
-
-              {/* <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-            <Col span={12}>
-              <Card>
-                <Row>
-                  <Col span={12}>
-                    <img
-                      src="https://images.pexels.com/photos/15743235/pexels-photo-15743235/free-photo-of-city-road-traffic-people.png?auto=compress&cs=tinysrgb&w=600&lazy=load"
-                      alt="Image"
-                      width={"150px"}
-                      height={"150px"}
-                    />
-                  </Col>
-                  <Col span={12}>
-                    <h3>Problem 1</h3>
-                    <p>
-                      <strong>Problem Description:</strong> Description 1
-                    </p>
-                    <Row>
-                      <Col>
-                        <Tag
-                          color="green"
-                          type="primary"
-                          onClick={() => handleUpvote(record._id)}
-                          icon={<CaretUpOutlined />} // Replace with your upvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          color="red"
-                          type="primary"
-                          onClick={() => handleDownvote(record._id)}
-                          icon={<CaretDownOutlined />} // Replace with your downvote icon
-                        ></Tag>
-                      </Col>
-                      <Col>
-                        <Tag
-                          type="primary"
-                          color="blue"
-                          onClick={() => {
-                            console.log("data", record);
-                            navigate("/complaintdetails/" + record._id);
-                          }}
-                        >
-                          Detail
-                        </Tag>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Card>
-            </Col> */}
             </Row>
           </Card>
         </div>
