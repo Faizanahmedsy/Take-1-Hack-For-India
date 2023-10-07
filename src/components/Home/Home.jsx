@@ -21,7 +21,7 @@ const Home = () => {
         margin: "100px",
       }}
     >
-      <h1>Hosting College Event Made East</h1>
+      <h1>India Cares</h1>
       <Form form={form} onFinish={onFinish} layout="vertical">
         <Row gutter={[16, 16]}>
           <Col span={12}>
