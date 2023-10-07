@@ -21,7 +21,7 @@
 
 // export default App;
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import About from "./components/About/About";
 import Home from "./components/Home/Home";
@@ -33,34 +33,42 @@ import ComplaintDetails from "./components/ComplaintDetails/ComplaintDetails";
 import Protected from "./RouterDom/Protected";
 // import MapComponent from "./components/MapComponent/MapComponent";
 import AdminHome from "./AdminPanel/AdminHome";
-import MapSearchComponent from "./components/MapSearchComponent/MapSearchComponent";
+import Login from "./components/Login/Login";
+// import MapSearchComponent from "./components/MapSearchComponent/MapSearchComponent";
 // import LeafLetMap from "./components/LeafLetMap/LeafLetMap";
 
 function App() {
-  const isLoggedIn = true;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    setIsLoggedIn(!!token);
+  }, []);
 
   return (
     <Router>
-      <AppLayout>
-        <Routes>
-          <Route path="/form" element={<EventRegistrationForm />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/" element={<SignIn />} />
-          <Route path="/list" element={<Listing />} />
-          <Route path="/complaintdetails/:id" element={<ComplaintDetails />} />
-          {/* <Route path="/map" element={<MapSearchComponent />} /> */}
-          {/* <Route path="/leafletmap" element={<LeafLetMap />} /> */}
-          <Route path="/adminhome" element={<AdminHome />} />
-          {/* <Route
+      {/* <AppLayout> */}
+      <Routes>
+        {/* <Route path="/form" element={<EventRegistrationForm />} /> */}
+        <Route path="/about" element={<About />} />
+        <Route path="/" element={<SignIn />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/list" element={<Listing />} />
+        <Route path="/complaintdetails/:id" element={<ComplaintDetails />} />
+        {/* <Route path="/map" element={<MapSearchComponent />} /> */}
+        {/* <Route path="/leafletmap" element={<LeafLetMap />} /> */}
+        <Route path="/adminhome" element={<AdminHome />} />
+        <Route
           path="/form"
           element={
             <Protected isLoggedIn={isLoggedIn}>
               <EventRegistrationForm />
             </Protected>
           }
-        /> */}
-        </Routes>
-      </AppLayout>
+        />
+      </Routes>
+      {/* </AppLayout> */}
     </Router>
   );
 }

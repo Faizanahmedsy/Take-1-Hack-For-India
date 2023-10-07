@@ -1,5 +1,5 @@
 import { Button, Checkbox, Col, Form, Input, Row, message } from "antd";
-import "./SignIn.css";
+import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Password from "antd/es/input/Password";
@@ -7,7 +7,7 @@ import axios from "axios";
 
 const apiUrl = "https://polished-totally-penguin.ngrok-free.app";
 
-const SignIn = () => {
+const Login = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -31,30 +31,16 @@ const SignIn = () => {
   // };
 
   const onFinish = async (values) => {
+    // delete values.fullName;
     try {
       setLoading(true);
       // Send a POST request to your login API endpoint
-      const response = await axios.post(apiUrl + "/api/user/create", values);
-      console.log("Registration Success:", response.data);
+      const response = await axios.post(apiUrl + "/api/user/login", values);
+      //   console.log("Login Success:", response.data);
 
       console.log(response);
       if (response.data.message === "Success") {
-        message.success("Registration Success");
-        navigate("/form");
-      }
-
-      // Check if the response contains a token (adjust this based on your API response structure)
-      const token = response.data.token;
-
-      console.log("token", token);
-      if (token) {
-        // Set the token in local storage
-        localStorage.setItem("token", token);
-
-        // Optionally, you can also set other user-related data in local storage if needed
-        // localStorage.setItem('userId', response.data.userId);
-
-        message.success("Registration Success");
+        message.success("Login Success");
         navigate("/form");
       }
 
@@ -94,11 +80,11 @@ const SignIn = () => {
           onFinishFailed={onFinishFailed}
           form={form}
         >
-          <p className="form-title">Register Now</p>
+          <p className="form-title">Login</p>
 
           {/* <p className="form-title">Welcome back</p> */}
           {/* <p>Login to the Dashboard</p> */}
-          <Form.Item
+          {/* <Form.Item
             name="fullName"
             style={{ marginTop: "15px" }}
             rules={[
@@ -116,7 +102,7 @@ const SignIn = () => {
               }}
               placeholder="Enter First Name"
             />
-          </Form.Item>
+          </Form.Item> */}
           {/* <Form.Item
             name="lastname"
             rules={[
@@ -264,7 +250,7 @@ const SignIn = () => {
               className="login-form-button"
               onClick={handleSignUp}
             >
-              Sign Up
+              Login
             </Button>
           </Form.Item>
         </Form>
@@ -274,4 +260,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Login;

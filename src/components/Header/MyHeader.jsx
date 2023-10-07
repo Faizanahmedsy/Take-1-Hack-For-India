@@ -1,14 +1,21 @@
 import React from "react";
-import { Menu, Layout, Button, Row, Col } from "antd";
+import { Menu, Layout, Button, Row, Col, Tag } from "antd";
 import { Link } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 const { Header, Content, Footer } = Layout;
 import "./MyHeader.css";
+import logo from "../../assets/logo2.png";
 
 const MyHeader = () => {
   return (
     <>
-      {/* <Header>
+      <div
+        style={{
+          padding: "30px",
+          backgroundColor: "#9EDDFF",
+        }}
+      >
+        {/* <Header>
         <div className="logo" />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1">
@@ -20,7 +27,7 @@ const MyHeader = () => {
           <Menu.Item key="3">About</Menu.Item>
         </Menu>
       </Header> */}
-      {/* <Header className="header">
+        {/* <Header className="header">
         <div className="logo">
           <Link to="/">
             <img src="/path/to/your-logo.png" alt="Logo" />
@@ -41,8 +48,8 @@ const MyHeader = () => {
           Login
         </Button>
       </Header> */}
-      {/* <Header className="header"> */}
-      {/* <div className="logo">
+        {/* <Header className="header"> */}
+        {/* <div className="logo">
           <Link to="/">
             <img src="/path/to/your-logo.png" alt="Logo" />
           </Link>
@@ -62,30 +69,104 @@ const MyHeader = () => {
         <Button className="login-button" icon={<UserOutlined />}>
           Login
         </Button> */}
-      <Row gutter={16}>
-        <Col span={18}>
-          <Link to={"/form"}>
-            <span
-              style={{
-                marginLeft: "52px",
-              }}
-            >
-              India Cares
-            </span>
-          </Link>
-        </Col>
-        <Col span={2}>
-          <Link to={"/form"}>Raise a complain</Link>
-          {/* <Link>HEllo</Link>
+        <Row gutter={16}>
+          {/* <Col span={18}>
+            <Link to={"/form"}>
+              <span
+                style={{
+                  marginLeft: "52px",
+                  fontSize: "30px",
+                  fontWeight: "bold",
+                  color: "#000000",
+                }}
+              >
+                India Cares
+              </span>
+            </Link>
+          </Col> */}
+          <Col span={18}>
+            <Link to={"/form"}>
+              <span
+                style={{
+                  display: "flex",
+                  alignItems: "center", // Center text and icon vertically
+                  marginLeft: "52px",
+                  fontSize: "30px",
+                  fontWeight: "bold",
+                  color: "#000000",
+                }}
+              >
+                {/* SVG Icon */}
+                <img
+                  src={logo} // Replace with the correct path to your SVG file
+                  alt="My Logo"
+                  width="44"
+                  height="44"
+                  style={{ marginRight: "10px" }} // Add spacing between icon and text
+                />
+                {/* Text */}
+                India Cares
+              </span>
+            </Link>
+          </Col>
+          <Col span={2}>
+            <Link to={"/form"}>
+              <Tag
+                color="orange"
+                // bordered={false}
+                style={{
+                  borderRadius: "10px",
+                  padding: "10px",
+                  fontWeight: "bold",
+                }}
+                // style={{
+                //   color: "#000000",
+                // }}
+              >
+                Raise a Complain
+              </Tag>
+            </Link>
+            {/* <Link>HEllo</Link>
           <Link>HEllo</Link> */}
-        </Col>
-        <Col span={2}>
-          <Link to={"/list"}>Public Complains</Link>
-        </Col>
-        <Col span={2}>
-          <Link to={"/map"}>Map</Link>
-        </Col>
-      </Row>
+          </Col>
+          <Col span={2}>
+            <Link to={"/list"}>
+              <Tag
+                color="purple"
+                // bordered={false}
+                style={{
+                  borderRadius: "10px",
+                  padding: "10px",
+                  fontWeight: "bold",
+                }}
+                // style={{
+                //   color: "#000000",
+                // }}
+              >
+                Public Complains
+              </Tag>
+            </Link>
+          </Col>
+          <Col span={2}>
+            <Link to={"/map"}>
+              {" "}
+              <Tag
+                color="blue"
+                // bordered={false}
+                style={{
+                  borderRadius: "10px",
+                  padding: "10px",
+                }}
+                // style={{
+                //   color: "#000000",
+                // }}
+              >
+                Map
+              </Tag>
+            </Link>
+          </Col>
+        </Row>
+      </div>
       {/* </Header> */}
     </>
   );
